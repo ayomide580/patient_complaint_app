@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Complaints Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>🩺 Patient Complaints Dashboard</h1>
+        <a href="/logout" class="logout-btn">🚪 Logout</a>
+        <p>Below are all complaints submitted by patients.</p>
+
+
+        {% if complaints %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Complaint</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in complaints %}
+                <tr>
+                    <td>{{ c['Full Name'] }}</td>
+                    <td>{{ c['Email'] }}</td>
+                    <td>{{ c['Complaint'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No complaints found yet.</p>
+        {% endif %}
+
+        <a href="/">🏠 Back to Form</a>
+    </div>
+</body>
+
+</html>
